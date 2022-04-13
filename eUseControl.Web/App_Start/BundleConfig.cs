@@ -39,6 +39,9 @@ namespace eUseControl.Web
             bundles.Add(new ScriptBundle("~/bundles/slick-custom/js").Include(
            "~/Vendors/js/slick-custom.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/validation/js").Include(
+          "~/Scripts/jquery.validate.min.js"));
+
             //Vendors vendor styles
             bundles.Add(new StyleBundle("~/bundles/animate/css").Include(
            "~/Vendors/vendor/animate/animate.css", new CssRewriteUrlTransform()));

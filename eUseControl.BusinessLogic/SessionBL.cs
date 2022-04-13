@@ -1,11 +1,7 @@
-﻿using eUseControl.BusinessLogic.Core;
+﻿using System.Web;
+using eUseControl.BusinessLogic.Core;
 using eUseControl.BusinessLogic.Interfaces;
 using eUseControl.Domain.Entities.User;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace eUseControl.BusinessLogic
 {
@@ -13,7 +9,17 @@ namespace eUseControl.BusinessLogic
     {
         public ULoginResp UserLogin(ULoginData data)
         {
-            throw new NotImplementedException();
+            return UserLoginAction(data);
+        }
+
+        public HttpCookie GenCookie(string loginCredential)
+        {
+            return Cookie(loginCredential);
+        }
+
+        public UserMinimal GetUserByCookie(string apiCookieValue)
+        {
+            return UserCookie(apiCookieValue);
         }
     }
 }

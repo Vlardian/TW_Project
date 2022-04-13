@@ -41,7 +41,7 @@ namespace eUseControl.Web.App_Start
                 var userLogin = _session.UserLogin(data);
                 if (userLogin.Status)
                 {
-                    HttpCookie cookie = _session.GenCookie(login.Credential);
+                    HttpCookie cookie = _session.CookieGenerator(login.Credential);
                     ControllerContext.HttpContext.Response.Cookies.Add(cookie);
 
                     return RedirectToAction("Index", "Home");
