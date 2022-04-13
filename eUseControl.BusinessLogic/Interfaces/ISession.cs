@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Web;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,6 +11,8 @@ namespace eUseControl.BusinessLogic.Interfaces
     public interface ISession
     {
         ULoginResp UserLogin(ULoginData data);
+        HttpCookie GenCookie(string loginCredential);
+        UserMinimal GetUserByCookie(string apiCookieValue);
     }
 
 
