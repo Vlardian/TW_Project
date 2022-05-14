@@ -1,0 +1,42 @@
+﻿@{
+    Layout = null;
+}
+@model eUseControl.Web.Models.MProduct
+
+<div>
+    <div>
+        <div>
+
+            @if (Model.ImagePath != null)
+            {
+                <img class="card-img h-100" src="@Url.Content(Model.ImagePath)" alt="..." style="height: 450px" />
+            }
+            <div class="card-img-overlay bg-dark-gradient d-flex flex-column-reverse">
+
+                @if (Model.Name != null)
+                {
+                    <h1 style="font-weight: bold">Nume: @Model.Name</h1>
+                }
+
+                @if (Model.Description != null)
+                {
+                    <h2>Descriere: @Model.Description</h2>
+                }
+
+                @if (Model.Price != null)
+                {
+                    <h3>Pret: @Model.Price MDL</h3>
+                }
+            </div>
+
+            <a href="@Url.Action("Edit", "Product", new { id = Model.Id })">
+                <button style="border-radius: 30%; padding: 10px; border: 2px black solid; background: transparent">Edit</button>
+            </a>
+
+            <a href="@Url.Action("Delete", "Product", new { id = Model.Id })">
+                <button style="border-radius: 30%; padding: 10px; border: 2px black solid; background: transparent">Delete</button>
+            </a>
+
+        </div>
+    </div>
+</div>

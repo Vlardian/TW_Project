@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 
 namespace eUseControl.BusinessLogic
 {
@@ -13,7 +14,19 @@ namespace eUseControl.BusinessLogic
     {
         public ULoginResp UserLogin(ULoginData data)
         {
-            throw new NotImplementedException();
+            return UserLoginAction(data);
+        }
+        public ULoginResp UserRegister(URegisterData data)
+        {
+            return UserRegisterAction(data);
+        }
+        public HttpCookie GenCookie(string loginCredential)
+        {
+            return Cookie(loginCredential);
+        }
+        public UProfileData GetUserByCookie(string apiCookieValue)
+        {
+            return UserCookie(apiCookieValue);
         }
     }
 }

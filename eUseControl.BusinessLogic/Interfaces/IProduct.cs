@@ -1,4 +1,5 @@
-﻿using eUseControl.Domain.Entities.User;
+﻿using eUseControl.Domain.Entities.Admin;
+using eUseControl.Domain.Entities.User;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,12 +10,12 @@ namespace eUseControl.BusinessLogic.Interfaces
 {
     public interface IProduct
     {
-            ULoginResp CreateProduct(PDbTable product);
-            ULoginResp EditProduct(PDbTable product);
-            List<ProductData> GetProductList(int page);
+        ProdResp Insert(Product prod);
+        List<Product> Get();
+        Product GetSingle(int id);
 
-            PDbTable GetSingleProduct(int id);
+        ProdResp Edit(Product product);
 
-            ULoginResp DeleteProductById(int id);
+        ProdResp DeleteProductById(int id);
     }
 }

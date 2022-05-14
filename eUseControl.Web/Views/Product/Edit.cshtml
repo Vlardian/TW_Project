@@ -1,0 +1,93 @@
+﻿@{
+    Layout = null;
+}
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+
+@model eUseControl.Web.Models.MProduct
+
+<div style="background-image: url(../../assets/img/gallery/header-bg.png); height:100vh; background-repeat:no-repeat; display: flex; justify-content: center; ">
+
+    @Html.ValidationSummary(true)
+    @using (Html.BeginForm("Edit", "Product", FormMethod.Post,
+                                   new
+                                   {
+                                       enctype = "multipart/form-data",
+                                       target = "UploadTarget",
+                                       @id = "CreateBookForm"
+                                   }))
+
+    {
+
+        @Html.AntiForgeryToken()
+        @Html.HiddenFor(m => m.Id)
+        @Html.LabelFor(m => m.Name, new { @class = "control-label", style = "font-size: 24px;" })
+        @Html.TextBoxFor(m => m.Name, new
+   {
+       @class = "form-control",
+       style = "width: 370px; display: block; margin-bottom: 30px"
+   })
+
+        @Html.LabelFor(m => m.Description, new { @class = "control-label", style = "font-size: 24px;" })
+        @Html.TextBoxFor(m => m.Description, new
+   {
+       @class = "form-control",
+       style = "width: 370px; display: block; margin-bottom: 30px"
+   })
+
+        @Html.LabelFor(m => m.Price, new { @class = "control-label", style = "font-size: 24px;" })
+        @Html.TextBoxFor(m => m.Price, new
+   {
+       @class = "form-control",
+       style = "width: 370px; display: block; margin-bottom: 30px"
+   })
+        @Html.LabelFor(m => m.Category, new { @class = "control-label", style = "font-size: 24px;" })
+        @Html.TextBoxFor(m => m.Category, new
+   {
+       @class = "form-control",
+       style = "width: 370px; display: block; margin-bottom: 30px"
+   })
+
+        <div style="display: block; padding-bottom: 30px">
+            <label for="file">Image</label>
+            <input type="file" name="file" class="form-control" />
+        </div>
+        <div class="col-md-12">
+            <button id="submitBtn" type="submit" class="btn btn-primary btn-md btn-block waves-effect text-center m-b-20">Add</button>
+        </div>
+    }
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/validation/js")
+
+    <script type="text/javascript">
+        $(function () {
+
+            $("#CreateForm").validate({
+                rules: {
+                    Username: {
+                        required: true
+                    },
+                    Password: {
+                        required: true
+                    }
+                },
+                submitHandler: function (form) {
+                    form.submit();
+                },
+                errorPlacement: function (error, element) {
+                    $(element)
+                        .closest("form")
+                        .find("label[for='" + element.attr("id") + "']")
+                        .append(error);
+                },
+                errorElement: "span"
+            });
+        });
+
+
+    </script>
+}

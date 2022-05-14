@@ -9,12 +9,12 @@ namespace eUseControl.BusinessLogic
 {
     public class BussinesLogic
     {
-        public ISession GetSessionBL()
+        public ISession getSessionBL()
         {
             return new SessionBL();
         }
 
-        public IProduct GetProductBL()
+        public IProduct getProductBL()
         {
             return new ProductBL();
         }

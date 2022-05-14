@@ -23,11 +23,28 @@
                         My Wishlist
                     </a>
                 </li>
-                <li class="p-b-13">
-                    <a href="#" class="stext-102 cl2 hov-cl1 trans-04">
-                        My Account
-                    </a>
-                </li>
+                @if (ViewBag.User == null)
+                {
+                    <li class="p-b-13">
+                        <a href="@Url.Action("Index", "Login")" class="stext-102 cl2 hov-cl1 trans-04">
+                            Login
+                        </a>
+                    </li>
+                }
+                else
+                {
+                    <li class="p-b-13">
+                        <a href="@Url.Action("Index", "Logout")" class="stext-102 cl2 hov-cl1 trans-04">
+                            Logout
+                        </a>
+                    </li>
+                    <li class="p-b-13">
+
+                        @ViewBag.User.Username
+
+                    </li>
+                }
+
                 <li class="p-b-13">
                     <a href="#" class="stext-102 cl2 hov-cl1 trans-04">
                         Track Oder

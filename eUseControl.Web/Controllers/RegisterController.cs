@@ -10,48 +10,42 @@ using System.Web.Mvc;
 
 namespace eUseControl.Web.Controllers
 {
-    public class LoginController : BaseController
+    public class RegisterController : Controller
     {
         private readonly ISession _session;
-        
-        public LoginController()
+        public RegisterController()
         {
-            var b1 = new BussinesLogic();
-            _session = b1.getSessionBL();
+            var bl = new BussinesLogic();
+            _session = bl.getSessionBL();
         }
-        
-        // GET: Login
+        // GET: Register
         public ActionResult Index()
         {
             return View();
         }
-
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Index(UserLogin login)
+        public ActionResult Index(UserRegister register)
         {
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
-                ULoginData data = new ULoginData
+                URegisterData data = new URegisterData
                 {
-                    Credential = login.Credential,
-                    Password = login.Password,
-                    LoginIp = Request.UserHostAddress,
-                    LoginDateTime = DateTime.Now
+                    Username = register.Username,
+                    Email = register.Email,
+                    Password = register.Password
                 };
-
-                var userLogin = _session.UserLogin(data);
-                if (userLogin.Status)
+                var userRegister = _session.UserRegister(data);
+                if (userRegister.Status)
                 {
                     return RedirectToAction("Index", "Home");
                 }
                 else
                 {
-                    ModelState.AddModelError("", userLogin.StatusMsg);
+                    ModelState.AddModelError("", userRegister.StatusMsg);
                     return View();
                 }
             }
-
             return View();
         }
     }
